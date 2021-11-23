@@ -16,6 +16,65 @@ void writeScreen(vector<vector<int>> &M);
 void moveDown(int y);
 void moveUp(int y); 
 void replicator(vector<vector<int>> &M);
+void bomber(vector<vector<int>> &M);
+void oscillator96(vector<vector<int>> &M);
+
+void oscillator96(vector<vector<int>> &M) {
+  int y = M.size()/2 - M.size()/10;
+  int x = M[0].size()/2 - M.size()/10;
+  
+  M[y-4][x-12] = 1;
+  M[y-4][x-13] = 1;
+  M[y-5][x-12] = 1;
+  M[y-5][x-13] = 1;
+  M[y+12][x+20] = 1;
+  M[y+12][x+21] = 1;
+  M[y+13][x+20] = 1;
+  M[y+13][x+21] = 1;
+
+  M[y-2][x-1] = 1;
+  M[y-3][x-1] = 1;
+  M[y-4][x-1] = 1;
+  M[y-3][x-2] = 1;
+  M[y-2][x-3] = 1;
+  M[y-1][x-4] = 1;
+  M[y-1][x-3] = 1;
+  M[y-1][x-2] = 1;
+
+  M[y+2][x+1] = 1;
+  M[y+3][x+1] = 1;
+  M[y+4][x+1] = 1;
+  M[y+3][x+2] = 1;
+  M[y+2][x+3] = 1;
+  M[y+1][x+4] = 1;
+  M[y+1][x+3] = 1;
+  M[y+1][x+2] = 1;
+}
+void bomber(vector<vector<int>> &M) {
+  int y = M.size()/2 - M.size()/5;
+  int x = M[0].size()/2 - M.size()/4;
+  M[y-7][x-3] = 1;
+  M[y-8][x-3] = 1;
+  M[y-9][x-3] = 1;
+
+  M[y-2][x-1] = 1;
+  M[y-3][x-1] = 1;
+  M[y-4][x-1] = 1;
+  M[y-3][x-2] = 1;
+  M[y-2][x-3] = 1;
+  M[y-1][x-4] = 1;
+  M[y-1][x-3] = 1;
+  M[y-1][x-2] = 1;
+
+  M[y+2][x+1] = 1;
+  M[y+3][x+1] = 1;
+  M[y+4][x+1] = 1;
+  M[y+3][x+2] = 1;
+  M[y+2][x+3] = 1;
+  M[y+1][x+4] = 1;
+  M[y+1][x+3] = 1;
+  M[y+1][x+2] = 1;
+}
 
 void replicator(vector<vector<int>> &M) {
   if (M.size() >= 10  && M[0].size() >= 10) {
@@ -108,14 +167,12 @@ void clearScreen(int x, int y) {
 
 // Writes the contents of vector life to stdout
 void writeScreen(vector<vector<int>> &M) {
-  int count = 0;
   int height = M.size(), width = M[0].size();
 
   for (int j = 0; j < height; j++) {
     for (int i = 0; i < width; i++) {
       if (M[j][i] == 1) {
         cout << "■";
-        count++;
       } 
       else {
         cout << " ";

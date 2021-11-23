@@ -42,10 +42,34 @@ int main(int argc, char *argv[]) {
 
   vector<vector<int>> life(height, vector<int> (width, 0));
   vector<vector<int>> prev(height+2, vector<int> (width+2, 0));
-  replicator(life);
 
   if (argc == 4) {
-    replicator(life);
+    int preset = std::stoi(argv[3]);
+
+    if (preset == 1) {
+      if (height >= 10  && width >= 10) { 
+        replicator(life);
+      } else {
+        std::cout << "Board too small for replicator\n";
+        exit(1);
+      }
+    }
+    else if (preset == 2) {
+      if (height >= 20  && width >= 20) { 
+        bomber(life);
+      } else {
+        std::cout << "Board too small for bomber\n";
+        exit(1);
+      }
+    } else if (preset == 3) {
+      if (height >= 35 && width >= 40) {
+        oscillator96(life);
+      } else {
+        std::cout << "Board too small for oscillator96\n";
+        exit(1);
+      }
+    }
+
   } else {
     generateMatrix(life);
   }

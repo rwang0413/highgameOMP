@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
   const int MAX_WIDTH = w.ws_col;
 
   if (argc != 3 && argc != 4) {
-    std::cout << "./highgame <iterations> <delay> <optional-replicator>\n";
+    std::cout << "./highgame <iterations> <delay> <optional-preset>\n";
     return 1;
   }
 
